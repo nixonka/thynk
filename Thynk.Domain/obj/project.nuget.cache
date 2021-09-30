@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W4jjqshPDdBD3E1tFECSkQoaZTqBYqMQYeZmLBBbuNm49zT7aPgCb7jBtIWgLd0MhORD7z5Duc1ficPJJYBPSg==",
+  "dgSpecHash": "APiuDFz6I7PPL6KhIg2p1EYh8SO4ET2L8iX5QCOe5q7shy8Y0gLZqyj56QBWflH1hjSHZA+iXK85QM7zvhkMaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Domain\\Thynk.Domain.csproj",
+  "projectFilePath": "C:\\git-repos\\Thynk\\Thynk.Domain\\Thynk.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

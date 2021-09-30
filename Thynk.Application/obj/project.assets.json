@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj",
+      "projectUniqueName": "C:\\git-repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj",
       "projectName": "Thynk.Application",
-      "projectPath": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj",
+      "projectPath": "C:\\git-repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj",
       "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Application\\obj\\",
+      "outputPath": "C:\\git-repos\\Thynk\\Thynk.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",

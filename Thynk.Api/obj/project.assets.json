@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "MediatR/9.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/MediatR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/MediatR.dll": {}
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
         "type": "package",
         "build": {
@@ -75,10 +84,48 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Thynk.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Thynk.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Thynk.Application.dll": {}
+        }
+      },
+      "Thynk.Persistance/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Thynk.Persistance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Thynk.Persistance.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "MediatR/9.0.0": {
+      "sha512": "8b3UYNxegHVYcJMG2zH8wn+YqxLvXG+eMfj0cMCq/jTW72p6O3PCKMkrIv0mqyxdW7bA4gblsocw7n+/9Akg5g==",
+      "type": "package",
+      "path": "mediatr/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gradient_128x128.png",
+        "lib/net461/MediatR.dll",
+        "lib/net461/MediatR.xml",
+        "lib/netstandard2.0/MediatR.dll",
+        "lib/netstandard2.0/MediatR.xml",
+        "lib/netstandard2.1/MediatR.dll",
+        "lib/netstandard2.1/MediatR.xml",
+        "mediatr.9.0.0.nupkg.sha512",
+        "mediatr.nuspec"
+      ]
+    },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "sha512": "LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
       "type": "package",
@@ -185,11 +232,24 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Thynk.Application/1.0.0": {
+      "type": "project",
+      "path": "../Thynk.Application/Thynk.Application.csproj",
+      "msbuildProject": "../Thynk.Application/Thynk.Application.csproj"
+    },
+    "Thynk.Persistance/1.0.0": {
+      "type": "project",
+      "path": "../Thynk.Persistance/Thynk.Persistance.csproj",
+      "msbuildProject": "../Thynk.Persistance/Thynk.Persistance.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Swashbuckle.AspNetCore >= 5.6.3"
+      "MediatR >= 9.0.0",
+      "Swashbuckle.AspNetCore >= 5.6.3",
+      "Thynk.Application >= 1.0.0",
+      "Thynk.Persistance >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -200,11 +260,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Api\\Thynk.Api.csproj",
+      "projectUniqueName": "C:\\git-repos\\Thynk\\Thynk.Api\\Thynk.Api.csproj",
       "projectName": "Thynk.Api",
-      "projectPath": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Api\\Thynk.Api.csproj",
+      "projectPath": "C:\\git-repos\\Thynk\\Thynk.Api\\Thynk.Api.csproj",
       "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nikol\\Source\\Repos\\Thynk\\Thynk.Api\\obj\\",
+      "outputPath": "C:\\git-repos\\Thynk\\Thynk.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -225,7 +285,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\git-repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj": {
+              "projectPath": "C:\\git-repos\\Thynk\\Thynk.Application\\Thynk.Application.csproj"
+            },
+            "C:\\git-repos\\Thynk\\Thynk.Persistance\\Thynk.Persistance.csproj": {
+              "projectPath": "C:\\git-repos\\Thynk\\Thynk.Persistance\\Thynk.Persistance.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -238,6 +305,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "MediatR": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
