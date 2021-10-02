@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Employee\Commands\" />
-    <Folder Include="Employee\Queries\" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Thynk.Domain\Thynk.Domain.csproj" />
   </ItemGroup>
 
 </Project>

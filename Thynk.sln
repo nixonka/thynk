@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thynk.Api", "Thynk.Api\Thynk.Api.csproj", "{D1CD7C24-99F5-45F5-9501-1C7A5639F21C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thynk.Api", "Thynk.Api\Thynk.Api.csproj", "{D1CD7C24-99F5-45F5-9501-1C7A5639F21C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{20E615B5-325C-4F46-94B8-458490364B76}"
 EndProject
@@ -11,11 +11,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{17133C37-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{95265B8F-83D7-42D0-95D9-84DE8FB08717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thynk.Application", "Thynk.Application\Thynk.Application.csproj", "{28627BEC-100F-4EAF-8ACB-B203716A06F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thynk.Application", "Thynk.Application\Thynk.Application.csproj", "{28627BEC-100F-4EAF-8ACB-B203716A06F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thynk.Domain", "Thynk.Domain\Thynk.Domain.csproj", "{5452A707-CE59-44D3-9FDB-3224902F2D16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thynk.Domain", "Thynk.Domain\Thynk.Domain.csproj", "{5452A707-CE59-44D3-9FDB-3224902F2D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thynk.Persistance", "Thynk.Persistance\Thynk.Persistance.csproj", "{D0D84207-7F03-4967-977B-44164F737E37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thynk.Persistance", "Thynk.Persistance\Thynk.Persistance.csproj", "{D0D84207-7F03-4967-977B-44164F737E37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5AAFA7EC-A11F-4297-8894-CA21A846CF86}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

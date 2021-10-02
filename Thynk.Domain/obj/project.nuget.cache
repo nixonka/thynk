@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "APiuDFz6I7PPL6KhIg2p1EYh8SO4ET2L8iX5QCOe5q7shy8Y0gLZqyj56QBWflH1hjSHZA+iXK85QM7zvhkMaA==",
+  "dgSpecHash": "qHfCgSiPaaVqpZcYLTXZep5ijNuq+sLRlTdR/97xovTgAq0hUHKQDdjnHpZGBcsbj69KP1IKAXLtLF+pGSeYzw==",
   "success": true,
   "projectFilePath": "C:\\git-repos\\Thynk\\Thynk.Domain\\Thynk.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\nikol\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\nikol\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\nikol\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

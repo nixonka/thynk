@@ -1,0 +1,1 @@
+ dotnet ef migrations add InitialMigration --startup-project ../Thynk.Api/Thynk.Api.csproj -c ApplicationDbContext
