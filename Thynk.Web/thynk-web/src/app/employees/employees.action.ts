@@ -30,6 +30,10 @@ export class SetSelectedEmployee {
     constructor(public payload: Employee) { }
 }
 
+export class SetEditEmployeeMode {
+    static readonly type = "[Employee] SetEditMode";
+}
+
 export class SetCreatedEmployeeId {
     static readonly type = "[Employee] SetCreatedEmployeeId";
 

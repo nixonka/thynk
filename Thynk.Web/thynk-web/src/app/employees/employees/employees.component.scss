@@ -1,0 +1,14 @@
+.employee {
+  display: flex;
+  height: 100vh;
+
+  &__master {
+    width: 35%;
+    background-color: #dadada;
+  }
+
+  &__details {
+    width: 65%;
+    // background-color: green;
+  }
+}

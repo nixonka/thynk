@@ -7,6 +7,7 @@ import {
     DeleteEmployee,
     GetEmployees,
     SetCreatedEmployeeId,
+    SetEditEmployeeMode,
     SetSelectedEmployee,
     UpdateEmployee
 } from "./employees.action";
@@ -25,13 +26,15 @@ export class EmployeeStateModel {
     };
     selectedEmployee: Employee = {} as Employee;
     createdEmployeeId?: number;
+    editMode?: boolean;
 }
 
 @State<EmployeeStateModel>({
     name: "employee",
     defaults: {
         employees: {},
-        selectedEmployee: {} as Employee
+        selectedEmployee: {} as Employee,
+        editMode: false
     }
 })
 @Injectable()
@@ -44,6 +47,11 @@ export class EmployeeState implements NgxsOnInit {
     @Selector()
     static getSelectedEmployee(state: EmployeeStateModel) {
         return state.selectedEmployee;
+    }
+
+    @Selector()
+    static getEditMode(state: EmployeeStateModel) {
+        return state.editMode;
     }
 
     @Selector()
@@ -110,11 +118,20 @@ export class EmployeeState implements NgxsOnInit {
     }
 
     @Action(SetSelectedEmployee)
-    setSelectedEmployeeId({ getState, setState }: StateContext<EmployeeStateModel>, { payload }: SetSelectedEmployee) {
+    setSelectedEmployee({ getState, setState }: StateContext<EmployeeStateModel>, { payload }: SetSelectedEmployee) {
         const state = getState();
         setState({
             ...state,
             selectedEmployee: payload
+        });
+    }
+
+    @Action(SetEditEmployeeMode)
+    setEditEmployeeMode({ getState, setState }: StateContext<EmployeeStateModel>) {
+        const state = getState();
+        setState({
+            ...state,
+            editMode: !state.editMode
         });
     }
 

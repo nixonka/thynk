@@ -1,1 +1,37 @@
-<p>employees-master works!</p>
+<div class="master">
+    <div *ngIf="isUndefinedOrEmpty((employees | async));else employeesList">
+        No employees in db
+    </div>
+    <ng-template #employeesList>
+        <div class="master__list">
+            <h1 class="master__title">List of Employees</h1>
+            <div class="master__employee-item"
+                [ngClass]="isSelected(employee.id) ? 'master__employee-item--selected' : ''"
+                *ngFor="let employee of employees | async as list">
+                <div class="master__employee-data" (click)="selectEmployee(employee)">
+                    <div class="master__image-box">
+                        <img class="master__employee-image" />
+                    </div>
+                    <div class="master__data-box">
+                        <div class="master__employee-name"
+                            [ngClass]="isSelected(employee.id) ? 'master__employee-name--selected' : ''">
+                            {{ employee.name }}
+                        </div>
+                        <div class="master__employee-role"
+                            [ngClass]="isSelected(employee.id) ? 'master__employee-role--selected' : ''">
+                            {{ employee.name }} at Thynk Software
+                        </div>
+                    </div>
+                </div>
+
+                <div class="master__employee-delete">
+                    <button class="master__delete-button"
+                        [ngClass]="isSelected(employee.id) ? 'master__delete-button--selected' : ''"
+                        (click)="deleteEmployee(employee.id)">
+                        <fa-icon [icon]="['far', 'trash-alt']"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

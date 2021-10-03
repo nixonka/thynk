@@ -1,0 +1,83 @@
+.master {
+  &__title {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    padding: 15px;
+    font-weight: bolder;
+  }
+
+  &__employee-item {
+    display: flex;
+    height: 100px;
+    padding: 15px;
+
+    &--selected {
+      background-color: #53994d;
+    }
+  }
+
+  &__employee-data {
+    display: flex;
+    flex-grow: 2;
+  }
+
+  &__employee-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: aqua;
+  }
+
+  &__image-box {
+    width: 100px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__data-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__employee-name {
+    font-size: 24px;
+    color: #181818;
+    font-weight: bolder;
+
+    &--selected {
+      color: #ffffff;
+    }
+  }
+
+  &__employee-role {
+    font-size: 16px;
+    color: #7e7e7e;
+
+    &--selected {
+      background-color: #53994d;
+      color: #d6d6d6;
+    }
+  }
+
+  &__delete-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #53994d;
+    cursor: pointer;
+
+    &--selected {
+      background-color: #53994d;
+      color: #ffffff;
+    }
+  }
+}

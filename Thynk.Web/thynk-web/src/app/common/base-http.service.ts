@@ -5,10 +5,10 @@ import { Observable } from "rxjs";
 
 export interface BaseHttpService<T> {
     fetch(): any;
-    fetchById(id: string): any;
-    delete(id: string): any;
+    fetchById(id: number): any;
+    delete(id: number): any;
     add(payload: T): any;
-    update(payload: T, id: string): any;
+    update(payload: T, id: number): any;
 }
 
 export interface BaseResponse<T> {

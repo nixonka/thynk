@@ -1,0 +1,72 @@
+.details {
+  &__no-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 16px;
+    color: #7e7e7e;
+  }
+
+  &__actions {
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+  }
+
+  &__edit-save-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #53994d;
+    cursor: pointer;
+  }
+
+  &__delete-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #53994d;
+    cursor: pointer;
+  }
+  &__employee-data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__basic-data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__employee-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: aqua;
+    border: 3px solid #53994d;
+  }
+
+  &__image-box {
+    width: 150px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__employee-name {
+    font-size: 24px;
+    color: #53994d;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  &__employee-role {
+    font-size: 16px;
+    color: #7e7e7e;
+    text-align: center;
+  }
+}
