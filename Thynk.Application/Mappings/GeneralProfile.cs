@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Thynk.Application.Employees.Commands;
+using Thynk.Application.Employees.Queries.GetAllEmployees;
 
 namespace Thynk.Application.Mappings
 {
@@ -13,9 +14,8 @@ namespace Thynk.Application.Mappings
         public GeneralProfile()
         {
             CreateMap<CreateEmployeeCommand, Employee>();
-            //CreateMap<Emplyee, GetAllEmplyeesViewModel>().ReverseMap();
-            //CreateMap<GetAllEmplyeesQuery, GetAllEmplyeesParameter>();
-            //CreateMap<ValueItem, GetListOfValuesEmplyeesViewModel>().ReverseMap();
+            CreateMap<Employee, GetAllEmployeesViewModel>().ReverseMap();
+            CreateMap<GetAllEmployeesQuery, GetAllEmployeesParameter>();
         }
     }
 }

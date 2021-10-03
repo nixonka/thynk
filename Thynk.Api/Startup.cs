@@ -22,8 +22,18 @@ namespace Thynk.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddAuthentication();
-
+            services
+                .AddCors(options =>
+                {
+                    options.AddDefaultPolicy(
+                        builder =>
+                        {
+                            builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                        });
+                });
             services.AddApplication();
             services.AddPersistanceInfrastructure(Configuration);
             services.AddControllers();
@@ -46,13 +56,19 @@ namespace Thynk.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Thynk.Api v1"));
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
