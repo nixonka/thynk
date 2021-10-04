@@ -1,11 +1,11 @@
 <div class="details">
-    <div class="details__no-selection" *ngIf="isUndefinedOrEmpty(employee);else employeeDetails">
+    <div class="details__no-selection" *ngIf="!this.isEmployeeSelected;else employeeDetails">
         Please select an Employee
     </div>
     <ng-template #employeeDetails>
         <div class="details__employee-data">
             <div class="details__actions">
-                <button class="details__edit-save-button" (click)="editEmployee(employee?.id)">
+                <button class="details__edit-save-button" (click)="editSaveEmployee(employee?.id)">
                     <fa-icon *ngIf="editMode$ | async" [icon]="['fas', 'save']"></fa-icon>
                     <fa-icon *ngIf="!(editMode$ | async)" [icon]="['fas', 'pencil-alt']"></fa-icon>
                 </button>
@@ -14,17 +14,39 @@
                 </button>
             </div>
 
-            <div class="details__basic-data">
-                <div class="details__image-box">
-                    <img class="details__employee-image" />
+            <div *ngIf="!(editMode$ | async)">
+                <div class="details__basic-data">
+                    <div class="details__image-box">
+                        <img class="details__employee-image" />
+                    </div>
+                    <div class="details__data-box">
+                        <div class="details__employee-name">
+                            {{ employee?.name }}
+                        </div>
+                        <div class="details__employee-job">
+                            {{ employee?.name }} at Thynk Software
+                        </div>
+                    </div>
                 </div>
-                <div class="details__data-box">
-                    <div class="details__employee-name">
-                        {{ employee?.name }}
+            </div>
+            <div *ngIf="editMode$ | async">
+                <div class="details__basic-data">
+                    <div class="details__image-box">
+                        <img class="details__employee-image" />
+                        <button class="details__edit-image-icon">
+                            <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
+                        </button>
                     </div>
-                    <div class="details__employee-role">
-                        {{ employee?.name }} at Thynk Software
-                    </div>
+                    <form *ngIf="employeeForm && employeeForm.form" [formGroup]="employeeForm.form" novalidate>
+                        <div class="details__data-box">
+                            <div class="details__employee-name">
+                                <input class="details__input details__input--big" type="text" formControlName="name" placeholder="Name">
+                            </div>
+                            <div class="details____employee-job">
+                                <input class="details__input" type="text" formControlName="name" placeholder="Job">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

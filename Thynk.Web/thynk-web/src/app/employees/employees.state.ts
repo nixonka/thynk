@@ -24,7 +24,7 @@ export class EmployeeStateModel {
         pageSize?: number;
         succeeded?: boolean;
     };
-    selectedEmployee: Employee = {} as Employee;
+    selectedEmployee?: Employee;
     createdEmployeeId?: number;
     editMode?: boolean;
 }
@@ -33,12 +33,21 @@ export class EmployeeStateModel {
     name: "employee",
     defaults: {
         employees: {},
-        selectedEmployee: {} as Employee,
         editMode: false
     }
 })
 @Injectable()
 export class EmployeeState implements NgxsOnInit {
+    @Selector()
+    static editMode(state: EmployeeStateModel) {
+      return state.editMode || false;
+    }
+
+    @Selector()
+    static isEmployeeSelected(state: EmployeeStateModel) {
+      return !!state.selectedEmployee;
+    }
+
     @Selector()
     static getEmployeeList(state: EmployeeStateModel) {
         return state.employees?.data;
@@ -55,7 +64,7 @@ export class EmployeeState implements NgxsOnInit {
     }
 
     @Selector()
-    static getSelectedEmployeeAsync(state: EmployeeStateModel): Promise<Employee> {
+    static getSelectedEmployeeAsync(state: EmployeeStateModel): Promise<Employee | undefined> {
         return new Promise((resolve, reject) => {
             resolve(state.selectedEmployee);
         });
@@ -83,9 +92,13 @@ export class EmployeeState implements NgxsOnInit {
     addEmployee({ getState, setState }: StateContext<EmployeeStateModel>, { payload }: AddEmployee) {
         return this.employeesService.add(payload).pipe(tap((result) => {
             const state = getState();
+            const employeesList = [...state.employees?.data || [], result.data];
             setState({
                 ...state,
-                createdEmployeeId: result.data
+                editMode: false,
+                selectedEmployee: undefined,
+                employees: { data: employeesList },
+                createdEmployeeId: result.data.id
             });
         }));
     }
@@ -96,9 +109,11 @@ export class EmployeeState implements NgxsOnInit {
             const state = getState();
             const employeesList = [...state.employees?.data || []];
             const employeeIndex = employeesList.findIndex(item => item.id === id);
-            employeesList[employeeIndex] = result.data;
+            employeesList[employeeIndex] = payload;
             setState({
                 ...state,
+                editMode: false,
+                selectedEmployee: payload,
                 employees: { data: employeesList },
             });
         }));
@@ -112,6 +127,7 @@ export class EmployeeState implements NgxsOnInit {
             const filteredArray = state.employees?.data?.filter(item => item.id !== id);
             setState({
                 ...state,
+                selectedEmployee: state.selectedEmployee?.id === id ? undefined : state.selectedEmployee,
                 employees: { ...state.employees, data: filteredArray },
             });
         }));

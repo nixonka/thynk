@@ -8,7 +8,7 @@ import { EmployeesRoutingModule } from './employee-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import { faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -28,6 +28,6 @@ import { faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 })
 export class EmployeesModule { 
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faTrashAlt, faPencilAlt, faSave);
+    library.addIcons(faTrashAlt, faPencilAlt, faSave, faPlus);
   }
 }

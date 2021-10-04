@@ -3,7 +3,7 @@ import { EmployeeState } from './../employees.state';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { DeleteEmployee, GetEmployees, SetSelectedEmployee } from '../employees.action';
+import { DeleteEmployee, GetEmployees, SetEditEmployeeMode, SetSelectedEmployee } from '../employees.action';
 
 @Component({
   selector: 'app-employees-master',
@@ -43,6 +43,11 @@ export class EmployeesMasterComponent implements OnInit {
     // add dialog
 
     this.store.dispatch(new DeleteEmployee(id));
+  }
+
+  public newEmployee() {
+    this.store.dispatch(new SetSelectedEmployee({} as Employee))
+    this.store.dispatch(new SetEditEmployeeMode());
   }
 
   private getEmployees(filter?: any) {

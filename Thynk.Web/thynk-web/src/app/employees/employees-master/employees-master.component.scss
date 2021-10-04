@@ -1,4 +1,16 @@
 .master {
+  position: relative;
+  &__add-employee {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #53994d;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   &__title {
     font-size: 24px;
     font-weight: 300;

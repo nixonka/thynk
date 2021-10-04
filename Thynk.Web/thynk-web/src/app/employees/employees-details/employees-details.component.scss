@@ -12,7 +12,7 @@
     height: 50px;
     padding: 10px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   &__edit-save-button {
@@ -49,12 +49,31 @@
     border: 3px solid #53994d;
   }
 
-  &__image-box {
-    width: 150px;
+  &__edit-image-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    size: 100px;
+    color: #53994d85;
+    font-size: 75px;
 
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__data-box {
+    margin-top: 20px;
+  }
+
+  &__image-box {
+    width: 150px;
+    height: 150px;
+    position: relative;
   }
 
   &__employee-name {
@@ -64,9 +83,22 @@
     text-align: center;
   }
 
-  &__employee-role {
+  &__employee-job {
     font-size: 16px;
     color: #7e7e7e;
     text-align: center;
+  }
+
+  &__input {
+    width: 100%;
+    background-color: #c5c5c5;
+    border: 1px solid #7e7e7e;
+    border-radius: 0;
+    padding: 5px;
+    margin-bottom: 5px;
+
+    &--big {
+      font-size: 24px;
+    }
   }
 }
