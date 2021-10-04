@@ -11,6 +11,7 @@ namespace Thynk.Application.Employees.Commands.UpdateEmployee
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Image { get; set; }
         public string Job { get; set; }
         public string Motto { get; set; }
         public string Hobbies { get; set; }
@@ -36,6 +37,7 @@ namespace Thynk.Application.Employees.Commands.UpdateEmployee
                 {
                     employee.Name = command.Name;
                     employee.Job = command.Job;
+                    employee.Image = command.Image;
                     employee.Motto = command.Motto;
                     employee.Hobbies = command.Hobbies;
                     employee.Hometown = command.Hometown;

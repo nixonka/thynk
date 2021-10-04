@@ -14,7 +14,7 @@
                 *ngFor="let employee of employees | async as list">
                 <div class="master__employee-data" (click)="selectEmployee(employee)">
                     <div class="master__image-box">
-                        <img class="master__employee-image" />
+                        <img *ngIf="imagePath(employee.image)" class="master__employee-image"  [src]="imagePath(employee.image)" />
                     </div>
                     <div class="master__data-box">
                         <div class="master__employee-name"

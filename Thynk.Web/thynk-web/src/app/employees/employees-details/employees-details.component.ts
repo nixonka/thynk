@@ -1,8 +1,8 @@
+import { EmployeesService } from './../employees.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { FormBase } from 'src/app/common/form-base';
 import { Employee } from '../employee.model';
 import { AddEmployee, DeleteEmployee, SetEditEmployeeMode, UpdateEmployee } from '../employees.action';
@@ -25,6 +25,8 @@ const formGroup = (dataItem?: Employee) => {
           dataItem && dataItem.hometown ? dataItem.hometown : null),
         personalBlog: new FormControl(
           dataItem && dataItem.personalBlog ? dataItem.personalBlog : null),
+        image: new FormControl(
+          dataItem && dataItem.image ? dataItem.image : null),
       }
     }
   );
@@ -52,8 +54,13 @@ export class EmployeesDetailsComponent implements OnInit {
     return this.store.selectSnapshot(EmployeeState.isEmployeeSelected);
   }
 
+  public get imagePath(): string {
+    return this.employeeService.image(this.employee.image);
+  }
+
   constructor(
     private store: Store,
+    private employeeService: EmployeesService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -75,6 +82,8 @@ export class EmployeesDetailsComponent implements OnInit {
     }
   }
 
+
+
   public async editSaveEmployee(id?: number) {
     if (this.editMode) {
       this.save();
@@ -85,17 +94,33 @@ export class EmployeesDetailsComponent implements OnInit {
 
   public async save() {
     if (this.employeeForm.form.valid) {
-      if (this.employeeForm.value.id) {
-        this.store.dispatch(new UpdateEmployee(this.employeeForm.value, this.employeeForm.value.id))
-      } else {
-        this.store.dispatch(new AddEmployee(this.employeeForm.value))
-      }
+      this.employeeService.uploadImage(this.employeeForm.files).subscribe((resp: any) => {
+        console.log(resp);
+        this.employeeForm.form.controls.image.patchValue(resp.data.path)
+
+        if (this.employeeForm.value.id) {
+          this.store.dispatch(new UpdateEmployee(this.employeeForm.value, this.employeeForm.value.id))
+        } else {
+          this.store.dispatch(new AddEmployee(this.employeeForm.value))
+        }
+      });
     } else {
-      this.formError = "Name is required"; 
+      this.formError = "Name is required";
     }
   }
 
   public isUndefinedOrEmpty() {
     return !this.isEmployeeSelected ? true : false
+  }
+
+  public uploader(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.employeeForm.files = new FormData();
+      this.employeeForm.files.append("file", file, file.name);
+    }
+
+    console.log(this.employeeForm.files);
+
   }
 }

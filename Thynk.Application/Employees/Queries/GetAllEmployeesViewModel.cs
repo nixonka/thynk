@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Job { get; set; }
+        public string Image { get; set; }
         public string Motto { get; set; }
         public string Hobbies { get; set; }
         public string Hometown { get; set; }

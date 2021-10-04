@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { DeleteEmployee, GetEmployees, SetEditEmployeeMode, SetSelectedEmployee } from '../employees.action';
+import { EmployeesService } from '../employees.service';
 
 @Component({
   selector: 'app-employees-master',
@@ -17,6 +18,7 @@ export class EmployeesMasterComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private employeeService: EmployeesService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +26,11 @@ export class EmployeesMasterComponent implements OnInit {
       this.selectedEmployee = e;
     });
     this.getEmployees();
+  }
+
+
+  public imagePath(name: string): string {
+    return this.employeeService.image(name || "");
   }
 
   public isUndefinedOrEmpty(data: any) {
