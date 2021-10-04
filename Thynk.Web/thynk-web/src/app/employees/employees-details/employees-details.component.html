@@ -24,30 +24,75 @@
                             {{ employee?.name }}
                         </div>
                         <div class="details__employee-job">
-                            {{ employee?.name }} at Thynk Software
+                            {{ employee?.job }} at Thynk Software
+                        </div>
+                    </div>
+                </div>
+                <div class="details__aditional-data">
+                    <div class="details__data-box">
+                        <div class="details__aditional-data-item">
+                            <span class="details__aditional-data-label">Motto</span>
+                            {{ employee?.motto }}
+                        </div>
+                        <div class="details__aditional-data-item">
+                            <span class="details__aditional-data-label">Hobbies</span>
+                            {{ employee?.hobbies }}
+                        </div>
+                        <div class="details__aditional-data-item">
+                            <span class="details__aditional-data-label">Hometown</span>
+                            {{ employee?.hometown }}
+                        </div>
+                        <div class="details__aditional-data-item">
+                            <span class="details__aditional-data-label">Personal Blog</span>
+                            {{ employee?.personalBlog }}
                         </div>
                     </div>
                 </div>
             </div>
             <div *ngIf="editMode$ | async">
-                <div class="details__basic-data">
-                    <div class="details__image-box">
-                        <img class="details__employee-image" />
-                        <button class="details__edit-image-icon">
-                            <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
-                        </button>
-                    </div>
-                    <form *ngIf="employeeForm && employeeForm.form" [formGroup]="employeeForm.form" novalidate>
+                <form *ngIf="employeeForm && employeeForm.form" [formGroup]="employeeForm.form" novalidate>
+                    <div class="details__basic-data">
+                        <div class="details__image-box">
+                            <img class="details__employee-image" />
+                            <button class="details__edit-image-icon">
+                                <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
+                            </button>
+                        </div>
                         <div class="details__data-box">
+                            <div *ngIf="!employeeForm.form.valid">
+                                {{ formError}}
+                            </div>
                             <div class="details__employee-name">
-                                <input class="details__input details__input--big" type="text" formControlName="name" placeholder="Name">
+                                <input class="details__input details__input--big" type="text" formControlName="name"
+                                    placeholder="Name">
                             </div>
                             <div class="details____employee-job">
-                                <input class="details__input" type="text" formControlName="name" placeholder="Job">
+                                <input class="details__input" type="text" formControlName="job" placeholder="Job">
                             </div>
                         </div>
-                    </form>
-                </div>
+
+                    </div>
+                    <div class="details__aditional-data">
+                        <div class="details__data-box">
+                            <div class="details__aditional-data-item">
+                                <span class="details__aditional-data-label">Motto</span>
+                                <input class="details__input" type="text" formControlName="motto">
+                            </div>
+                            <div class="details__aditional-data-item">
+                                <span class="details__aditional-data-label">Hobbies</span>
+                                <input class="details__input" type="text" formControlName="hobbies">
+                            </div>
+                            <div class="details__aditional-data-item">
+                                <span class="details__aditional-data-label">Hometown</span>
+                                <input class="details__input" type="text" formControlName="hometown">
+                            </div>
+                            <div class="details__aditional-data-item">
+                                <span class="details__aditional-data-label">Personal Blog</span>
+                                <input class="details__input" type="text" formControlName="personalBlog">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </ng-template>

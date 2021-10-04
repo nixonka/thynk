@@ -15,6 +15,16 @@ const formGroup = (dataItem?: Employee) => {
       ...{
         name: new FormControl(
           dataItem && dataItem.name ? dataItem.name : null, Validators.required),
+        job: new FormControl(
+          dataItem && dataItem.job ? dataItem.job : null),
+        motto: new FormControl(
+          dataItem && dataItem.motto ? dataItem.motto : null),
+        hobbies: new FormControl(
+          dataItem && dataItem.hobbies ? dataItem.hobbies : null),
+        hometown: new FormControl(
+          dataItem && dataItem.hometown ? dataItem.hometown : null),
+        personalBlog: new FormControl(
+          dataItem && dataItem.personalBlog ? dataItem.personalBlog : null),
       }
     }
   );
@@ -32,6 +42,7 @@ export class EmployeesDetailsComponent implements OnInit {
 
   public employeeForm: FormBase<Employee>;
   public employee: Employee = {} as Employee;
+  public formError: string = "";
 
   public get editMode(): boolean {
     return this.store.selectSnapshot(EmployeeState.editMode);
@@ -53,12 +64,8 @@ export class EmployeesDetailsComponent implements OnInit {
       this.employeeForm = new FormBase(
         formGroup(e)
       );
-      console.log(this.employeeForm);
-
     });
   }
-
-
 
   public deleteEmployee(id?: number) {
 
@@ -77,10 +84,14 @@ export class EmployeesDetailsComponent implements OnInit {
   }
 
   public async save() {
-    if (this.employeeForm.value.id) {
-      this.store.dispatch(new UpdateEmployee(this.employeeForm.value, this.employeeForm.value.id))
+    if (this.employeeForm.form.valid) {
+      if (this.employeeForm.value.id) {
+        this.store.dispatch(new UpdateEmployee(this.employeeForm.value, this.employeeForm.value.id))
+      } else {
+        this.store.dispatch(new AddEmployee(this.employeeForm.value))
+      }
     } else {
-      this.store.dispatch(new AddEmployee(this.employeeForm.value))
+      this.formError = "Name is required"; 
     }
   }
 
