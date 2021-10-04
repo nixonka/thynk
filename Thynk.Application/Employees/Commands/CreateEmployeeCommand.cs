@@ -11,6 +11,11 @@ namespace Thynk.Application.Employees.Commands
     public partial class CreateEmployeeCommand : IRequest<Response<Employee>>
     {
         public string Name { get; set; }
+        public string Job { get; set; }
+        public string Motto { get; set; }
+        public string Hobbies { get; set; }
+        public string Hometown { get; set; }
+        public string PersonalBlog { get; set; }
     }
 
     public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, Response<Employee>>
